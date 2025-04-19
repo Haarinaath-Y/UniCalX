@@ -1,61 +1,82 @@
 length:
-  meters: 1.0
-  kilometers: 1000.0
-  centimeters: 0.01
-  millimeters: 0.001
-  feet: 0.3048
-  inches: 0.0254
-  miles: 1609.34
-  yards: 0.9144
+  default_from: meters
+  default_to: kilometers
+  units:
+    meters: 1.0
+    kilometers: 1000.0
+    centimeters: 0.01
+    millimeters: 0.001
+    feet: 0.3048
+    inches: 0.0254
+    miles: 1609.34
+    yards: 0.9144
 
 weight:
-  kilograms: 1.0
-  grams: 0.001
-  pounds: 0.453592
-  ounces: 0.0283495
-  stones: 6.35029
-  metric tons: 1000.0
+  default_from: grams
+  default_to: kilograms
+  units:
+    kilograms: 1.0
+    grams: 0.001
+    pounds: 0.453592
+    ounces: 0.0283495
+    stones: 6.35029
+    metric tons: 1000.0
 
 force:
-  newtons: 1.0
-  dynes: 0.00001
-  kilograms-force: 9.80665
-  pounds-force: 4.44822
-  ounces-force: 0.278014
-  joules/meter: 1.0
+  default_from: newtons
+  default_to: kilonewtons
+  units:
+    newtons: 1.0
+    dynes: 0.00001
+    kilograms-force: 9.80665
+    pounds-force: 4.44822
+    ounces-force: 0.278014
+    joules/meter: 1.0
 
 volume:
-  cubic meters: 1.0
-  cubic kilometers: 1000000000.0
-  cubic centimeters: 0.000001
-  cubic millimeters: 1e-9
-  liters: 0.001
-  milliliters: 1e-6
-  gallons (US): 0.00378541
-  gallons (UK): 0.00454609
-  cubic feet: 0.0283168
-  cubic inches: 1.63871e-5
+  default_from: liters
+  default_to: milliliters
+  units:
+    cubic meters: 1.0
+    cubic kilometers: 1000000000.0
+    cubic centimeters: 0.000001
+    cubic millimeters: 1e-9
+    liters: 0.001
+    milliliters: 1e-6
+    gallons (US): 0.00378541
+    gallons (UK): 0.00454609
+    cubic feet: 0.0283168
+    cubic inches: 1.63871e-5
 
 speed:
-  meters/second: 1.0
-  kilometers/hour: 0.277778
-  miles/hour: 0.44704
-  feet/second: 0.3048
-  knots: 0.514444
+  default_from: meters/second
+  default_to: kilometers/hour
+  units:
+    meters/second: 1.0
+    kilometers/hour: 0.277778
+    miles/hour: 0.44704
+    feet/second: 0.3048
+    knots: 0.514444
 
 temperature:
-  celsius: 1.0
-  fahrenheit: 0.555556
-  kelvin: 1.0
+  default_from: celsius
+  default_to: fahrenheit
+  units:
+    celsius: 1.0
+    fahrenheit: 0.555556
+    kelvin: 1.0
 
 area:
-  square meters: 1.0
-  square kilometers: 1000000.0
-  square centimeters: 0.0001
-  square millimeters: 1e-6
-  square feet: 0.092903
-  square inches: 0.00064516
-  acres: 4046.86
-  hectares: 10000.0
-  cents: 0.025
-  ground: 0.0044
+  default_from: square meters
+  default_to: square kilometers
+  units:
+    square meters: 1.0
+    square kilometers: 1000000.0
+    square centimeters: 0.0001
+    square millimeters: 1e-6
+    square feet: 0.092903
+    square inches: 0.00064516
+    acres: 4046.86
+    hectares: 10000.0
+    cents: 0.025
+    ground: 0.0044

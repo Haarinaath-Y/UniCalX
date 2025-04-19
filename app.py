@@ -33,13 +33,25 @@ conversion_options["Temperature"] = lambda: TemperatureConverter()
 default_conversions = ["Length", "Area", "Volume"]
 for i, conversion_type in enumerate(default_conversions):
     converter = conversion_options[conversion_type]()
-    ui = ConverterUI(converter, conversion_type)
+    ui = ConverterUI(
+        converter,
+        conversion_type,
+        from_unit=converter.default_from,
+        to_unit=converter.default_to
+    )
     ui.display()
 
 # Allow user to select additional conversion types
+st.header("Select Conversion Type")
 conversion_type1 = st.selectbox("Select conversion type:", list(conversion_options.keys()), key='selection1')
 if conversion_type1:
     converter = conversion_options[conversion_type1]()
-    ui = ConverterUI(converter, conversion_type1, instance_id=2)
+    ui = ConverterUI(
+        converter,
+        conversion_type1,
+        instance_id=2,
+        from_unit=converter.default_from,
+        to_unit=converter.default_to
+    )
     ui.display()
 

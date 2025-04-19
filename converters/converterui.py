@@ -2,10 +2,12 @@ import streamlit as st
 
 
 class ConverterUI:
-    def __init__(self, converter, title, instance_id=1):
+    def __init__(self, converter, title, instance_id=1, from_unit=None, to_unit=None):
         self.converter = converter
         self.title = title
         self.instance_id = instance_id
+        self.from_unit = from_unit
+        self.to_unit = to_unit
 
     def display(self):
         st.subheader(f"{self.title} Conversion")
@@ -14,8 +16,18 @@ class ConverterUI:
 
         # User inputs
         with col1:
-            from_unit = st.selectbox("From unit:", [unit.title() for unit in self.converter.units.keys()], key=f"{self.title}_from_unit_{self.instance_id}")
-            to_unit = st.selectbox("To unit:", [unit.title() for unit in self.converter.units.keys()], key=f"{self.title}_to_unit_{self.instance_id}")
+            from_unit = st.selectbox(
+                "From unit:",
+                [unit.title() for unit in self.converter.units.keys()],
+                index=list(self.converter.units.keys()).index(self.from_unit) if self.from_unit else 0,
+                key=f"{self.title}_from_unit_{self.instance_id}"
+            )
+            to_unit = st.selectbox(
+                "To unit:",
+                [unit.title() for unit in self.converter.units.keys()],
+                index=list(self.converter.units.keys()).index(self.to_unit) if self.to_unit else 0,
+                key=f"{self.title}_to_unit_{self.instance_id}"
+            )
 
         with col2:
             value = st.number_input("Enter value:", value=1.0, step=0.01, key=f"{self.title}_value_unit_{self.instance_id}")

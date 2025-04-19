@@ -3,7 +3,11 @@ import yaml
 
 class UnitConverter:
     def __init__(self, unit_type):
-        self.units = self.load_units(unit_type)
+        self.unit_type = unit_type
+        self.data = self.load_units(unit_type)
+        self.units = self.data.get("units", {})
+        self.default_from = self.data.get("default_from")
+        self.default_to = self.data.get("default_to")
 
     @staticmethod
     def load_units(unit_type):
@@ -20,12 +24,12 @@ class UnitConverter:
 
     def convert_to_base(self, value, from_unit):
         if from_unit not in self.units:
-            return "Invalid 'from' unit"
+            return f"Error: '{from_unit}' is not a valid unit for {self.unit_type}."
         return float(value) * float(self.units[from_unit])
 
     def convert_from_base(self, base_value, to_unit):
         if to_unit not in self.units:
-            return "Invalid 'to' unit"
+            return f"Error: '{to_unit}' is not a valid unit for {self.unit_type}."
         return float(base_value) / float(self.units[to_unit])
 
     def convert(self, value, from_unit, to_unit):
