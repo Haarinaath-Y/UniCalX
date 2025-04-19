@@ -1,28 +1,27 @@
 import streamlit as st
-from mensuration.length import LengthConverter
-from mensuration.weight import WeightConverter
-from mensuration.area import AreaConverter
-from mensuration.volume import VolumeConverter
-from mensuration.speed import SpeedConverter
-from mensuration.force import ForceConverter
-from mensuration.temperature import TemperatureConverter
 from converters.converterui import ConverterUI
+from converters.unitconverter import UnitConverter
+
 
 st.set_page_config(page_title="UniCalX", page_icon="💻", layout="wide")
 st.title("💻 UniCalX")
 st.sidebar.success("Navigate yourself")
 
 
-# Instantiate the converter outside the Streamlit app flow for efficiency
+# Factory function for creating converters
+def get_converter(unit_type):
+    return UnitConverter(unit_type)
 
+
+# Instantiate the converter outside the Streamlit app flow for efficiency
 conversion_options = {
-    "Length": lambda: LengthConverter(),
-    "Weight": lambda: WeightConverter(),
-    "Volume": lambda: VolumeConverter(),
-    "Area": lambda: AreaConverter(),
-    "Speed": lambda: SpeedConverter(),
-    "Force": lambda: ForceConverter(),
-    "Temperature": lambda: TemperatureConverter()
+    "Length": lambda: get_converter("length"),
+    "Weight": lambda: get_converter("weight"),
+    "Volume": lambda: get_converter("volume"),
+    "Area": lambda: get_converter("area"),
+    "Speed": lambda: get_converter("speed"),
+    "Force": lambda: get_converter("force"),
+    "Temperature": lambda: get_converter("temperature"),
 }
 
 # Display default conversion types
