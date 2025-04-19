@@ -20,12 +20,12 @@ class UnitConverter:
 
     def convert_to_base(self, value, from_unit):
         if from_unit not in self.units:
-            raise ValueError(f"Invalid 'from' unit: {from_unit}")
+            return "Invalid 'from' unit"
         return value * self.units[from_unit]
 
     def convert_from_base(self, base_value, to_unit):
         if to_unit not in self.units:
-            raise ValueError(f"Invalid 'from' unit: {to_unit}")
+            return "Invalid 'to' unit"
         return base_value / self.units[to_unit]
 
     def convert(self, value, from_unit, to_unit):
