@@ -21,12 +21,12 @@ class UnitConverter:
     def convert_to_base(self, value, from_unit):
         if from_unit not in self.units:
             return "Invalid 'from' unit"
-        return value * self.units[from_unit]
+        return float(value) * float(self.units[from_unit])
 
     def convert_from_base(self, base_value, to_unit):
         if to_unit not in self.units:
             return "Invalid 'to' unit"
-        return base_value / self.units[to_unit]
+        return float(base_value) / float(self.units[to_unit])
 
     def convert(self, value, from_unit, to_unit):
         base_value = self.convert_to_base(value, from_unit)
