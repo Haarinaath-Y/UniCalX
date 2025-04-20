@@ -41,8 +41,10 @@ class ConverterUI:
                 st.markdown(f"{value:.4f}")
             else:
                 result = self.converter.convert(value, from_unit_key, to_unit_key)
-                if isinstance(result, str):
+                if result is None:  # Check if validation failed
+                    return None
+                elif isinstance(result, str):
                     st.error(result)
                 else:
                     st.markdown("**Result:**")
-                    st.markdown(f"{result:.4f}")
+                    st.markdown(f"{result:.4f} {to_unit}")

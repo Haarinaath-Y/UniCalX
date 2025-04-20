@@ -1,31 +1,16 @@
 import streamlit as st
-from typing import Callable, Dict
 from converters.converterui import ConverterUI
-from converters.unitconverter import UnitConverter
-from mensuration.temperature import TemperatureConverter
-from utils import get_converter
+from converters.converter_registry import ConverterRegistry
 
 
 st.set_page_config(page_title="UniCalX", page_icon="💻", layout="wide")
 st.title("💻 UniCalX")
 st.sidebar.success("Navigate yourself")
 
-# Instantiate the converter outside the Streamlit app flow for efficiency
-ConversionOptionsType = Dict[str, Callable[[], UnitConverter]]
-
-unit_types = ["length", "weight", "volume", "area", "speed", "force"]
-
-# Dynamically generate conversion options
-conversion_options: ConversionOptionsType = {
-    unit_type.capitalize(): lambda u=unit_type: get_converter(u) for unit_type in unit_types
-}
-# Add TemperatureConverter separately
-conversion_options["Temperature"] = lambda: TemperatureConverter()
-
-# Display default conversion types
+# Define default conversion types
 default_conversions = ["Length", "Area", "Volume"]
-for i, conversion_type in enumerate(default_conversions):
-    converter = conversion_options[conversion_type]()
+for conversion_type in default_conversions:
+    converter = ConverterRegistry.get_converter(conversion_type.lower())
     ui = ConverterUI(
         converter,
         conversion_type,
@@ -37,9 +22,9 @@ for i, conversion_type in enumerate(default_conversions):
 
 # Allow user to select additional conversion types
 st.header("Select Conversion Type")
-conversion_type1 = st.selectbox("Select conversion type:", list(conversion_options.keys()), key='selection1')
+conversion_type1 = st.selectbox("Select conversion type:", ["Length", "Area", "Volume", "Temperature"])
 if conversion_type1:
-    converter = conversion_options[conversion_type1]()
+    converter = ConverterRegistry.get_converter(conversion_type1.lower())
     ui = ConverterUI(
         converter,
         conversion_type1,
