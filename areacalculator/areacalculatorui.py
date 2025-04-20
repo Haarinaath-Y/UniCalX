@@ -3,13 +3,12 @@ from areacalculator.areacalculator import AreaCalculator
 
 
 class AreaCalculatorUI:
-    def __init__(self, converter, title, instance_id=1, from_unit=None, to_unit=None):
-        self.converter = converter
+    def __init__(self, area_calculator, title, instance_id=1, from_unit=None, to_unit=None):
+        self.area_calculator = area_calculator
         self.title = title
         self.instance_id = instance_id
         self.from_unit = from_unit
         self.to_unit = to_unit
-        self.shape_calculator = AreaCalculator(converter)
 
     def display_area_calculator(self):
         st.header(f"{self.title} Calculator")
@@ -18,15 +17,15 @@ class AreaCalculatorUI:
         shapes = {
             "Rectangle": {
                 "inputs": [("Enter length:", 1.0), ("Enter width:", 1.0)],
-                "method": self.shape_calculator.calculate_rectangle_area
+                "method": self.area_calculator.calculate_rectangle_area
             },
             "Circle": {
                 "inputs": [("Enter radius:", 1.0)],
-                "method": self.shape_calculator.calculate_circle_area
+                "method": self.area_calculator.calculate_circle_area
             },
             "Triangle": {
                 "inputs": [("Enter base:", 1.0), ("Enter height:", 1.0)],
-                "method": self.shape_calculator.calculate_triangle_area
+                "method": self.area_calculator.calculate_triangle_area
             }
         }
 
@@ -39,8 +38,8 @@ class AreaCalculatorUI:
             inputs.append(st.number_input(label, value=default, step=0.01))
 
         # Select units
-        from_unit = st.selectbox("From unit:", list(self.converter.units.keys()))
-        to_unit = st.selectbox("To unit:", list(self.converter.units.keys()))
+        from_unit = st.selectbox("From unit:", list(self.area_calculator.unit_converter.units.keys()))
+        to_unit = st.selectbox("To unit:", list(self.area_calculator.unit_converter.units.keys()))
 
         # Calculate area
         input_unit_result, output_unit_result = shapes[shape]["method"](*inputs, from_unit, to_unit)
