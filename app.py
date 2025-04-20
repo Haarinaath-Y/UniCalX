@@ -33,6 +33,7 @@ for i, conversion_type in enumerate(default_conversions):
         to_unit=converter.default_to
     )
     ui.display()
+    st.divider()
 
 # Allow user to select additional conversion types
 st.header("Select Conversion Type")
