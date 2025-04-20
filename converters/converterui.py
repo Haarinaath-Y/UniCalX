@@ -9,6 +9,15 @@ class ConverterUI:
         self.from_unit = from_unit
         self.to_unit = to_unit
 
+    @staticmethod
+    def create_dropdown(label, options, default, key):
+        return st.selectbox(
+            label,
+            [option.title() for option in options],
+            index=options.index(default) if default else 0,
+            key=key
+        )
+
     def display(self):
         st.subheader(f"{self.title} Conversion")
 
@@ -16,17 +25,17 @@ class ConverterUI:
 
         # User inputs
         with col1:
-            from_unit = st.selectbox(
+            from_unit = self.create_dropdown(
                 "From unit:",
-                [unit.title() for unit in self.converter.units.keys()],
-                index=list(self.converter.units.keys()).index(self.from_unit) if self.from_unit else 0,
-                key=f"{self.title}_from_unit_{self.instance_id}"
+                list(self.converter.units.keys()),
+                self.from_unit,
+                f"{self.title}_from_unit_{self.instance_id}"
             )
-            to_unit = st.selectbox(
+            to_unit = self.create_dropdown(
                 "To unit:",
-                [unit.title() for unit in self.converter.units.keys()],
-                index=list(self.converter.units.keys()).index(self.to_unit) if self.to_unit else 0,
-                key=f"{self.title}_to_unit_{self.instance_id}"
+                list(self.converter.units.keys()),
+                self.to_unit,
+                f"{self.title}_to_unit_{self.instance_id}"
             )
 
         with col2:

@@ -15,7 +15,7 @@ def area_calculator():
     # Instantiate the AreaCalculator with the "area" UnitConverter
     shape_area_calculator = AreaCalculator(get_converter("area"))
     area_calculator_ui = AreaCalculatorUI(
-        shape_area_calculator.unit_converter,
+        shape_area_calculator,
         "Area",
         instance_id=1,
         from_unit=shape_area_calculator.unit_converter.default_from,

@@ -3,6 +3,9 @@ import streamlit as st
 
 
 class UnitConverter:
+    _unit_data_cache = {}
+
+    """A base class for unit conversion."""
     def __init__(self, unit_type):
         self.unit_type = unit_type
         self.data = self.load_units(unit_type)
@@ -12,16 +15,18 @@ class UnitConverter:
 
     @staticmethod
     def load_units(unit_type):
-        try:
-            with open("units.yaml", "r") as file:
-                data = yaml.safe_load(file)
-                if unit_type not in data:
-                    raise ValueError(f"Unit type '{unit_type}' not found in configuration.")
-                return data[unit_type]
-        except FileNotFoundError:
-            raise FileNotFoundError("The units.yaml configuration file is missing.")
-        except yaml.YAMLError:
-            raise ValueError("The units.yaml file contains invalid YAML.")
+        if not UnitConverter._unit_data_cache:
+            try:
+                with open("units.yaml", "r") as file:
+                    UnitConverter._unit_data_cache = yaml.safe_load(file)
+            except FileNotFoundError:
+                raise FileNotFoundError("The units.yaml configuration file is missing.")
+            except yaml.YAMLError:
+                raise ValueError("The units.yaml file contains invalid YAML.")
+
+        if unit_type not in UnitConverter._unit_data_cache:
+            raise ValueError(f"Unit type '{unit_type}' not found in configuration.")
+        return UnitConverter._unit_data_cache[unit_type]
 
     def convert_to_base(self, value, from_unit):
         if from_unit not in self.units:
