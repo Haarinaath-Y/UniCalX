@@ -1,5 +1,6 @@
 import streamlit as st
 
+
 class VolumeCalculatorUI:
     def __init__(self, volume_calculator, title, instance_id=1, from_unit=None, to_unit=None):
         self.volume_calculator = volume_calculator
@@ -7,7 +8,6 @@ class VolumeCalculatorUI:
         self.instance_id = instance_id
         self.from_unit = from_unit
         self.to_unit = to_unit
-
 
     def display_volume_calculator(self):
         st.header(f"{self.title} Calculator")
@@ -41,8 +41,10 @@ class VolumeCalculatorUI:
             inputs.append(st.number_input(label, value=default, step=0.01))
 
         # Select units
-        from_unit = st.selectbox("From unit:", [unit.capitalize() for unit in self.volume_calculator.unit_converter.units.keys()])
-        to_unit = st.selectbox("To unit:", [unit.capitalize() for unit in self.volume_calculator.unit_converter.units.keys()])
+        from_unit = st.selectbox("From unit:",
+                                 [unit.capitalize() for unit in self.volume_calculator.unit_converter.units.keys()])
+        to_unit = st.selectbox("To unit:",
+                               [unit.capitalize() for unit in self.volume_calculator.unit_converter.units.keys()])
 
         # Calculate volume
         volume_result, converted_result = shapes[shape]["method"](*inputs, from_unit.lower(), to_unit.lower())
