@@ -44,8 +44,8 @@ volume:
     cubic millimeters: 1e-9
     liters: 0.001
     milliliters: 1e-6
-    gallons (US): 0.00378541
-    gallons (UK): 0.00454609
+    gallons (us): 0.00378541
+    gallons (uk): 0.00454609
     cubic feet: 0.0283168
     cubic inches: 1.63871e-5
 
