@@ -68,8 +68,8 @@ temperature:
     kelvin: 1.0
 
 area:
-  default_from: square meters
-  default_to: square kilometers
+  default_from: square feet
+  default_to: square meters
   units:
     square meters: 1.0
     square kilometers: 1000000.0

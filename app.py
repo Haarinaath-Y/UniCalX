@@ -3,21 +3,14 @@ from typing import Callable, Dict
 from converters.converterui import ConverterUI
 from converters.unitconverter import UnitConverter
 from mensuration.temperature import TemperatureConverter
+from utils import get_converter
 
 
 st.set_page_config(page_title="UniCalX", page_icon="💻", layout="wide")
 st.title("💻 UniCalX")
 st.sidebar.success("Navigate yourself")
 
-
-# Factory function for creating converters
-def get_converter(unit_type):
-    return UnitConverter(unit_type)
-
-
 # Instantiate the converter outside the Streamlit app flow for efficiency
-
-# Define the type for conversion options
 ConversionOptionsType = Dict[str, Callable[[], UnitConverter]]
 
 unit_types = ["length", "weight", "volume", "area", "speed", "force"]
@@ -54,4 +47,3 @@ if conversion_type1:
         to_unit=converter.default_to
     )
     ui.display()
-
