@@ -27,6 +27,7 @@ force:
   default_to: kilonewtons
   units:
     newtons: 1.0
+    kilonewtons: 1000.0
     dynes: 0.00001
     kilograms-force: 9.80665
     pounds-force: 4.44822
