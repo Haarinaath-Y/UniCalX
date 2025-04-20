@@ -1,5 +1,4 @@
 import streamlit as st
-from areacalculator.areacalculator import AreaCalculator
 
 
 class AreaCalculatorUI:
@@ -38,14 +37,14 @@ class AreaCalculatorUI:
             inputs.append(st.number_input(label, value=default, step=0.01))
 
         # Select units
-        from_unit = st.selectbox("From unit:", list(self.area_calculator.unit_converter.units.keys()))
-        to_unit = st.selectbox("To unit:", list(self.area_calculator.unit_converter.units.keys()))
+        from_unit = st.selectbox("From unit:", [unit.title() for unit in self.area_calculator.unit_converter.units.keys()])
+        to_unit = st.selectbox("To unit:", [unit.title() for unit in self.area_calculator.unit_converter.units.keys()])
 
         # Calculate area
-        input_unit_result, output_unit_result = shapes[shape]["method"](*inputs, from_unit, to_unit)
+        input_unit_result, output_unit_result = shapes[shape]["method"](*inputs, from_unit.lower(), to_unit.lower())
 
         # Display result
         if isinstance(input_unit_result, str):
             st.error(input_unit_result)
         else:
-            st.success(f"Area of {shape}: {input_unit_result:.4f} {from_unit} = {output_unit_result:.4f} {to_unit}")
+            st.success(f"{self.title} of {shape}: {input_unit_result:.4f} {from_unit} = {output_unit_result:.4f} {to_unit}")
