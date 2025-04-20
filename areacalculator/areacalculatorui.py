@@ -43,10 +43,10 @@ class AreaCalculatorUI:
         to_unit = st.selectbox("To unit:", list(self.converter.units.keys()))
 
         # Calculate area
-        result = shapes[shape]["method"](*inputs, from_unit, to_unit)
+        input_unit_result, output_unit_result = shapes[shape]["method"](*inputs, from_unit, to_unit)
 
         # Display result
-        if isinstance(result, str):
-            st.error(result)
+        if isinstance(input_unit_result, str):
+            st.error(input_unit_result)
         else:
-            st.success(f"Area: {result:.4f} {to_unit}")
+            st.success(f"Area of {shape}: {input_unit_result:.4f} {from_unit} = {output_unit_result:.4f} {to_unit}")
