@@ -22,7 +22,7 @@ for conversion_type in default_conversions:
 
 # Allow user to select additional conversion types
 st.header("Select Conversion Type")
-conversion_type1 = st.selectbox("Select conversion type:", ["Length", "Area", "Volume", "Temperature"])
+conversion_type1 = st.selectbox("Select conversion type:", ["Length", "Area", "Volume", "Temperature", "Force", "Weight", "Speed"])
 if conversion_type1:
     converter = ConverterRegistry.get_converter(conversion_type1.lower())
     ui = ConverterUI(
