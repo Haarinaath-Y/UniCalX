@@ -6,7 +6,7 @@ from utils import get_converter
 
 
 st.set_page_config(
-    page_title='volume Calculator',
+    page_title='Volume Calculator',
     layout="wide"
 )
 
