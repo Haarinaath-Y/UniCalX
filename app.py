@@ -32,7 +32,7 @@ for conversion_type in default_conversions:
 
 # Allow user to select additional conversion types
 st.header("Other Conversion Types")
-conversion_type1 = st.selectbox("Select conversion type:", ["Speed", "Weight", "Temperature", "Force", "Pressure", "Energy", "Power", "Time", "Data", "Length", "Area", "Volume"])
+conversion_type1 = st.selectbox("Select conversion type:", ["Speed", "Weight", "Temperature", "Force", "Energy", "Power", "Time", "Data", "Length", "Area", "Volume"])
 if conversion_type1:
     converter = get_cached_converter(conversion_type1)
     display_converter(conversion_type1, instance_id=2)
