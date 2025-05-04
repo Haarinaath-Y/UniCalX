@@ -1,5 +1,5 @@
 from converters.unitconverter import UnitConverter
-from mensuration.temperature import TemperatureConverter
+from conversion.temperature import TemperatureConverter
 
 
 class ConverterRegistry:
