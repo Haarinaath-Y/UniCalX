@@ -5,8 +5,7 @@ from utils import get_converter
 
 
 st.set_page_config(
-    page_title='Area Calculator',
-    layout="wide"
+    page_title='Area Calculator'
 )
 
 

@@ -1,14 +1,13 @@
 import streamlit as st
 from bmicalculator.bmicalculator import BMICalculator
 
-title = "️‍️‍️‍🏋️‍♂️ BMI Calculator"
+title = "️‍️‍️‍BMI Calculator"
 st.set_page_config(
-    page_title=title,
-    layout="wide"
+    page_title=title
 )
 
 def bmi_calculator():
-    st.title(title)
+    st.title(f'🏋️‍♂️ {title}')
 
     st.info("""
     ### Calculate Your BMI

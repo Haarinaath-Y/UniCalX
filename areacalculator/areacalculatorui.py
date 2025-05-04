@@ -10,7 +10,7 @@ class AreaCalculatorUI:
         self.to_unit = to_unit
 
     def display_area_calculator(self):
-        st.header(f"{self.title} Calculator")
+        st.header(f"📐 {self.title} Calculator")
 
         # Define shape-specific input fields and calculation methods
         shapes = {

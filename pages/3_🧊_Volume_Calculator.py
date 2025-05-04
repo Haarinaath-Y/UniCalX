@@ -5,9 +5,9 @@ import streamlit as st
 from utils import get_converter
 
 
+title = "Volume"
 st.set_page_config(
-    page_title='Volume Calculator',
-    layout="wide"
+    page_title=f'{title} Calculator'
 )
 
 
@@ -17,7 +17,7 @@ def volume_calculator():
     shape_volume_calculator = VolumeCalculator(get_converter("volume"))
     volume_calculator_ui = VolumeCalculatorUI(
         shape_volume_calculator,
-        "Volume",
+        title,
         instance_id=1,
         from_unit=shape_volume_calculator.unit_converter.default_from,
         to_unit=shape_volume_calculator.unit_converter.default_to

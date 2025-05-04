@@ -146,3 +146,8 @@ energy:
     electronvolts: 1.60218e-19
     british thermal units: 1055.06
     therms: 105505600.0
+
+currency:
+  default_from: USD
+  default_to: EUR
+  units: live
