@@ -1,5 +1,5 @@
 import streamlit as st
-from utils import get_headers, get_cached_converter, display_converter
+from utils import get_cached_converter, display_converter
 
 st.set_page_config(page_title="UniCalX", page_icon="💻", layout="wide")
 st.title("💻 UniCalX")
@@ -21,9 +21,6 @@ Whether you're a student, engineer, or just need quick conversions, UniCalX has 
 Enjoy seamless and accurate unit conversions!
 """)
 
-# Use the cached function to get headers
-headers = get_headers()
-
 
 # Define default conversion types
 st.header("🚀 Quick Conversions")
@@ -35,7 +32,7 @@ for conversion_type in default_conversions:
 
 # Allow user to select additional conversion types
 st.header("Other Conversion Types")
-conversion_type1 = st.selectbox("Select conversion type:", headers)
+conversion_type1 = st.selectbox("Select conversion type:", ["Length", "Area", "Volume", "Speed", "Weight", "Temperature"])
 if conversion_type1:
     converter = get_cached_converter(conversion_type1)
     display_converter(conversion_type1, instance_id=2)
